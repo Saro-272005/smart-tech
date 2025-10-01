@@ -40,18 +40,28 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage: storage });
+
+// --- START: MODIFIED DATABASE CONNECTION FOR TIDB CLOUD ---
 const db = mysql.createConnection({
-  host: process.env.DB_HOST || "localhost",
-  user: process.env.DB_USER || "root",
-  password: process.env.DB_PASSWORD || "Saravana@272005",
-  database: process.env.DB_NAME || "smartdb",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT || 4000, // Port for TiDB Cloud
+  ssl: {
+    // TiDB Cloud requires SSL connection
+    minVersion: 'TLSv1.2',
+    rejectUnauthorized: true
+  }
 });
+// --- END: MODIFIED DATABASE CONNECTION FOR TIDB CLOUD ---
+
 db.connect((err) => {
   if (err) {
     console.error("❌ DB connection failed:", err);
     process.exit(1);
   } else {
-    console.log("✅ MySQL connected successfully!");
+    console.log("✅ MySQL (TiDB Cloud) connected successfully!");
   }
 });
 const createServicesTableSql = `
