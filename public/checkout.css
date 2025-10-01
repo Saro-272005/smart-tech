@@ -1,0 +1,269 @@
+/* =================================================================== */
+/* CHECKOUT & ORDER SUMMARY STYLES                                   */
+/* =================================================================== */
+
+/* ----- Main Layout & Stepper ----- */
+main {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    margin-top: 50px;
+}
+
+.checkout-stepper-container {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+.stepper-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    position: relative;
+}
+.stepper-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    z-index: 2;
+}
+.stepper-label {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+.stepper-item.active .stepper-circle { background-color: var(--primary-color); }
+.stepper-item.active .stepper-label { color: var(--primary-color); font-weight: 600; }
+.stepper-item.completed .stepper-circle { background-color: var(--success-color); }
+
+.stepper-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background-color: #e0e0e0;
+    z-index: 1;
+}
+.stepper-item.completed:not(:last-child)::after {
+    background-color: var(--success-color);
+}
+
+
+/* ----- Billing Page Layout ----- */
+.billing-layout {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    align-items: flex-start;
+    margin-top: 50px;
+}
+
+.billing-form-section, .billing-summary-section {
+    background: var(--surface-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.billing-form-section h3, .billing-summary-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* ----- Form Styles ----- */
+#billingForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+.form-group input, .form-group textarea {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+}
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* ----- Order Summary Styles ----- */
+.billing-summary-section {
+    position: sticky;
+    top: 100px;
+}
+.order-summary-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.order-summary-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 4px;
+}
+.order-summary-info {
+    flex-grow: 1;
+}
+.order-summary-price {
+    font-weight: 600;
+}
+.price-breakdown {
+    border-top: 1px solid var(--border-color);
+    padding-top: 1rem;
+    margin-top: 1rem;
+}
+.price-breakdown .price-summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+.price-breakdown .price-summary-total {
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-top: 1px solid var(--text-color);
+    padding-top: 0.75rem;
+    margin-top: 0.5rem;
+}
+.place-order-btn {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.place-order-btn:hover {
+    background-color: var(--secondary-hover);
+}
+
+/* Pudhu Payment Information Styles */
+.payment-info {
+    margin-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+}
+
+.payment-option {
+    background-color: #f8f9fa;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.payment-option input {
+    margin-right: 0.75rem;
+}
+.payment-option.selected {
+    border-color: var(--primary-color);
+    background-color: #e3f2fd;
+}
+
+/* QR Code Styles */
+.qr-code-container {
+    text-align: center;
+    padding: 1rem 0;
+    border: 1px dashed var(--border-color);
+    border-radius: 6px;
+    margin-top: 1rem;
+}
+.qr-code-container.hidden {
+    display: none;
+}
+.qr-code-container p {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+/* ===== Order Success Page Styles ===== */
+.success-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.success-icon {
+    font-size: 48px;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background-color: var(--success-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.summary {
+    text-align: left;
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+.delivery-details-summary {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+}
+.delivery-details-summary h4 {
+    margin-bottom: 0.5rem;
+}
+
+.action-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+
+/* ----- Responsive ----- */
+@media (max-width: 900px) {
+    .billing-layout {
+        grid-template-columns: 1fr;
+    }
+}
+

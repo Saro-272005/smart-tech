@@ -1,0 +1,182 @@
+/* =================================================================== */
+/* ABOUT PAGE STYLES (for about.html) - REDESIGNED VERSION           */
+/* =================================================================== */
+
+/* Section 1: Hero Banner Styles */
+.about-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1588373714242-3211516f40a9?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+    color: white;
+    padding: 6rem 2rem;
+    text-align: center;
+}
+
+.about-hero-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.about-hero-content p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+}
+
+/* Section 2: Our Journey & Stats Styles */
+.our-journey-section {
+    padding: 4rem 1rem;
+    background-color: #f8f9fa; /* Light grey background */
+}
+
+.our-journey-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* Stats on left, content on right */
+    gap: 3rem;
+    align-items: center;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.stat-item {
+    background-color: var(--surface-color);
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    border-top: 4px solid var(--primary-color);
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: var(--muted-color);
+}
+
+.journey-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.journey-description {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.journey-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.journey-actions .btn.secondary {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+.journey-actions .btn.secondary:hover {
+    background-color: var(--text-color);
+    color: white;
+}
+
+
+/* Section 3: Founder Section Styles */
+.founder-section {
+    padding: 4rem 1rem;
+}
+
+.founder-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.founder-image img {
+    width: 100%;
+    border-radius: 50%;
+    border: 8px solid var(--surface-color);
+    box-shadow: var(--shadow-md);
+}
+
+.section-title-left {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+    text-align: left;
+}
+
+.section-title-left::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.founder-details h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.founder-title {
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.founder-details p {
+    line-height: 1.7;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .our-journey-container {
+        grid-template-columns: 1fr;
+    }
+    .journey-content {
+        text-align: center;
+    }
+    .journey-actions {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .founder-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .founder-image {
+        max-width: 250px;
+        margin: 0 auto 2rem;
+    }
+    .section-title-left {
+        text-align: center;
+    }
+    .section-title-left::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}

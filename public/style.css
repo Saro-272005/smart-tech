@@ -1,0 +1,346 @@
+/* =================================================================== */
+/* BASE STYLES (Smart Tech Shop)                                     */
+/* =================================================================== */
+
+/* ----- Google Fonts ----- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ----- CSS Variables ----- */
+:root {
+    --primary-color: #007BFF;
+    --primary-hover: #0056b3;
+    --secondary-color: #ff8c00;
+    --secondary-hover: #cc7000;
+    --background-color: #f7f9fc;
+    --surface-color: #ffffff;
+    --text-color: #343a40;
+    --muted-color: #6c757d;
+    --border-color: #dee2e6;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --font-family: 'Poppins', sans-serif;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+}
+
+/* ----- Global Reset & Body ----- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1;
+    padding-top: 80px; /* Space for fixed header */
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-hover);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ----- Header ----- */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: var(--surface-color);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 28px;
+    transition: all 0.3s ease;
+}
+
+.main-header .logo-link {
+    display: flex;
+    align-items: center;
+}
+
+.main-header .logo-img {
+    height: 40px;
+    width: auto;
+}
+
+
+.main-header nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.main-header nav .nav-link {
+    color: var(--text-color);
+    font-weight: 500;
+    position: relative;
+    padding: 5px 0;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.main-header nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.main-header nav .nav-link:hover::after,
+.main-header nav .nav-link.active::after {
+    width: 100%;
+}
+
+.cart-icon-link {
+    position: relative;
+}
+
+#cartCountBadge {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: var(--danger-color);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+/* === MODIFIED LOGIN BUTTON STYLES === */
+/* MODIFICATION: Selector-ah innum specific aakiruken, so vera style override pannadhu */
+.main-header nav .login-btn-nav {
+    font-size: 0.95rem;
+    font-weight: 600;
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1.5px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    /* Padding change panni rectangle shape kondu varrom */
+    padding: 8px 24px;
+}
+
+.login-btn-nav:hover {
+    background-color: var(--primary-color);
+    color: white; 
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.login-btn-nav::after {
+    display: none;
+}
+
+/* === NEW PROFILE CONTAINER STYLES === */
+.profile-container {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    transition: background-color 0.2s ease;
+}
+.profile-container:hover {
+    background-color: var(--background-color);
+}
+.profile-icon {
+    width: 24px;
+    height: 24px;
+}
+.profile-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+.dropdown-arrow {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease;
+}
+.profile-container.open .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* === NEW DROPDOWN MENU STYLES === */
+.profile-dropdown {
+    display: none;
+    position: absolute;
+    top: 120%;
+    right: 0;
+    background-color: var(--surface-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    z-index: 1001;
+    width: 180px;
+}
+.profile-dropdown.show {
+    display: block;
+}
+.profile-dropdown a {
+    display: block;
+    padding: 12px 16px;
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+.profile-dropdown a:hover {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+}
+.dropdown-divider {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 4px 0;
+}
+
+
+/* ----- Footer ----- */
+.footer {
+    background: #232f3e;
+    color: #fff;
+    padding: 40px 20px 20px;
+    flex-shrink: 0;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+}
+
+.footer-section h3 {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links ul li {
+    margin-bottom: 8px;
+}
+
+.footer-links ul li a {
+    color: #ddd;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #444;
+    padding-top: 20px;
+    font-size: 0.9rem;
+    color: #bbb;
+}
+
+
+/* ----- Buttons ----- */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.btn.primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+.btn.primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+/* ----- Modals ----- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+/* ----- Toast ----- */
+.custom-toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--surface-color);
+    color: var(--text-color);
+    padding: 16px 24px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    z-index: 9999;
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0;
+    transition: all 0.4s ease;
+    border-left: 5px solid var(--success-color);
+}
+.custom-toast.show {
+    top: 80px;
+    opacity: 1;
+}
+.custom-toast.error {
+    border-left-color: var(--danger-color);
+}
+

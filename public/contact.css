@@ -1,0 +1,55 @@
+/* =================================================================== */
+/* CONTACT PAGE STYLES (for contact.html)                            */
+/* =================================================================== */
+.contact-section {
+    padding: 2rem;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    background-color: var(--surface-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+.contact-info-map, .contact-form-container {
+    padding: 2.5rem;
+}
+
+.contact-info-map h2, .contact-form-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact-info-map p {
+    margin-bottom: 1rem;
+}
+
+.map-container {
+    margin-top: 2rem;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-family: var(--font-family);
+}
